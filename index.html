@@ -3,330 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anweeksha Saha | Graphics & Tech</title>
+    <title>Anweeksha Saha | Visuals & Code</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* --- LUXE DARK MODE STYLES --- */
         :root {
             --gold: #bf953f;
             --gold-light: #fcf6ba;
             --bg: #050505;
             --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg);
-            color: #e0e0e0;
-            font-family: 'Poppins', sans-serif;
-            overflow-x: hidden;
+        /* --- CUSTOM CURSOR --- */
+        body { margin: 0; background-color: var(--bg); color: #e0e0e0; font-family: 'Poppins', sans-serif; cursor: none; overflow-x: hidden; }
+        
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0; transform: translate(-50%, -50%); border-radius: 50%; z-index: 9999; pointer-events: none;
         }
+        .cursor-dot { width: 8px; height: 8px; background-color: var(--gold); }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid var(--gold); transition: width 0.2s, height 0.2s, background-color 0.2s; }
+        
+        /* Hover State for Cursor */
+        body:hover .cursor-outline.expanded { width: 60px; height: 60px; background-color: rgba(191, 149, 63, 0.1); border-color: transparent; }
 
-        /* Gold Gradient Text Animation */
+        /* --- ANIMATED BACKGROUND ORBS --- */
+        .bg-orb {
+            position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.4; z-index: -1; animation: floatOrb 10s infinite alternate;
+        }
+        .orb-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #5a3f11; }
+        .orb-2 { bottom: -10%; right: -10%; width: 600px; height: 600px; background: #1a0f30; animation-delay: -5s; }
+
+        @keyframes floatOrb { from { transform: translate(0, 0); } to { transform: translate(50px, 50px); } }
+
+        /* --- HEADER & TYPOGRAPHY --- */
+        header { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        
+        .profile-pic {
+            width: 200px; height: 200px; object-fit: cover; border-radius: 50%;
+            border: 2px solid var(--gold); box-shadow: 0 0 60px rgba(191, 149, 63, 0.3);
+            margin-bottom: 30px; animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        h1 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; line-height: 1; letter-spacing: -2px; }
+        
         .gold-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            animation: shine 6s linear infinite;
-            background-size: 200%;
+            background: linear-gradient(to right, #bf953f, #fff, #b38728);
+            -webkit-background-clip: text; color: transparent; background-size: 200%;
+            animation: shine 4s linear infinite;
         }
         @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- HEADER --- */
-        header {
-            min-height: 95vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
-            padding: 20px;
-        }
-
-        /* Floating Profile Pic */
-        .profile-pic {
-            width: 220px;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 50px rgba(191, 149, 63, 0.4);
-            margin-bottom: 30px;
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            margin: 0;
-            letter-spacing: -1px;
-            line-height: 1.1;
-        }
-
-        p.subtitle {
-            font-size: 1.1rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #888;
-            margin-top: 15px;
-        }
+        /* Typing Effect Container */
+        .typewriter { font-size: 1.2rem; color: #888; letter-spacing: 3px; text-transform: uppercase; margin-top: 15px; height: 1.5em; }
 
         /* --- SECTIONS --- */
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
+        .container { max-width: 1100px; margin: auto; padding: 100px 20px; }
+        
         h2.section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: #fff;
-            position: relative;
+            font-family: 'Playfair Display', serif; font-size: 3rem; text-align: center; margin-bottom: 80px;
+            color: #fff; position: relative; display: inline-block; left: 50%; transform: translateX(-50%);
         }
         h2.section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--gold);
-            margin: 20px auto 0;
+            content: ''; display: block; width: 80%; height: 2px; background: var(--gold);
+            margin: 10px auto 0; opacity: 0.5;
         }
 
-        /* --- SKILLS PILLS --- */
-        .skills-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-        .skill-pill {
-            background: rgba(191, 149, 63, 0.1);
-            border: 1px solid var(--gold);
-            color: var(--gold-light);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        .skill-pill:hover {
-            background: var(--gold);
-            color: #000;
-            box-shadow: 0 0 20px var(--gold);
-        }
+        /* --- 3D TILT CARDS --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; perspective: 1000px; }
 
-        /* --- GLASS CARDS (General) --- */
         .glass-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 30px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        /* --- TIMELINE EXPERIENCE GRID --- */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 40px;
+            transition: transform 0.1s, box-shadow 0.3s; position: relative; overflow: hidden;
+            transform-style: preserve-3d;
         }
         
-        .role-badge {
-            display: inline-block;
-            background: rgba(191, 149, 63, 0.2);
-            color: var(--gold);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        /* Shine Effect */
+        .glass-card::before {
+            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: 0.5s; pointer-events: none;
         }
+        .glass-card:hover::before { left: 100%; }
+        
+        .role-badge { 
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); border: 1px solid rgba(191,149,63,0.3); padding: 5px 15px; border-radius: 50px; display: inline-block; margin-bottom: 15px;
+        }
+        
+        .glass-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 10px 0; color: #fff; }
+        .glass-card p { font-size: 0.95rem; color: #aaa; line-height: 1.6; }
 
-        /* --- AWARDS BOX --- */
-        .award-box {
-            border: 1px solid var(--gold);
-            background: linear-gradient(145deg, rgba(191,149,63,0.1), rgba(0,0,0,0));
-            text-align: center;
-            padding: 40px;
-            border-radius: 12px;
-            margin-bottom: 40px;
+        /* --- SKILLS --- */
+        .skill-tag {
+            display: inline-block; padding: 10px 25px; margin: 5px; border-radius: 30px;
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1);
+            color: #ccc; font-size: 0.9rem; transition: 0.3s;
         }
+        .skill-tag:hover { background: var(--gold); color: #000; border-color: var(--gold); transform: scale(1.05); }
+
+        /* --- AWARD HIGHLIGHT --- */
+        .award-banner {
+            background: linear-gradient(45deg, rgba(191,149,63,0.1), transparent);
+            border-left: 5px solid var(--gold); padding: 50px; margin-bottom: 60px;
+            position: relative; overflow: hidden;
+        }
+        .award-banner i { position: absolute; right: -20px; bottom: -20px; font-size: 10rem; color: rgba(255,255,255,0.02); }
+
+        /* --- SCROLL ANIMATION CLASS --- */
+        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* --- FOOTER --- */
-        footer {
-            background: #000;
-            text-align: center;
-            padding: 60px 20px;
-            color: #666;
-            border-top: 1px solid #111;
-        }
-        .social-icons a {
-            color: #fff;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-        .social-icons a:hover { color: var(--gold); }
+        footer { padding: 80px 0; text-align: center; font-size: 0.9rem; color: #555; }
+        .socials { font-size: 1.8rem; margin-bottom: 20px; }
+        .socials a { color: #fff; margin: 0 15px; transition: 0.3s; }
+        .socials a:hover { color: var(--gold); transform: scale(1.2); display: inline-block; }
 
-        /* Mobile Fix */
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            .profile-pic { width: 160px; height: 160px; }
+            h1 { font-size: 3rem; }
+            .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on touch */
+            body { cursor: auto; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="profile.jpg" onerror="this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'" alt="Anweeksha Saha" class="profile-pic">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header>
+        <img src="profile.jpg" onerror="this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'" alt="Profile" class="profile-pic">
         <h1 class="gold-text">ANWEEKSHA SAHA</h1>
-        <p class="subtitle">Graphics Lead & Tech Enthusiast</p>
-        <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
-            <i class="fas fa-map-marker-alt" style="color: var(--gold);"></i> Howrah, West Bengal
-        </p>
+        <div class="typewriter" id="typewriter"></div>
+        <p style="margin-top: 20px; color: #666; font-size: 0.9rem; letter-spacing: 2px;">📍 HOWRAH, WEST BENGAL</p>
     </header>
 
-    <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="glass-card" style="text-align: center; max-width: 800px; margin: auto;">
-            <p style="line-height: 1.8; color: #ccc;">
-                I am a 2nd-year <strong>B.Tech Computer Science</strong> student at IEM Kolkata, with a unique blend of creative and technical skills. 
-                I specialize in <strong>Graphic Design and UI/UX</strong>, while actively building expertise in <strong>AI, Python, and Data Analytics</strong>.
-                <br><br>
-                From leading design teams for hackathons to analyzing data with Pandas, I enjoy problem-solving and building innovative solutions.
-            </p>
+    <div class="container reveal">
+        <h2 class="section-title">The Fusion of Art & Tech</h2>
+        <div style="text-align: center; max-width: 800px; margin: auto; font-size: 1.1rem; line-height: 1.8; color: #ccc;">
+            I am a 2nd-year <strong>B.Tech Computer Science</strong> student at IEM Kolkata. 
+            I don't just write code; I design experiences. <br><br>
+            Bridging the gap between <strong>Graphic Design (UI/UX)</strong> and <strong>Artificial Intelligence</strong>, 
+            I build systems that are as beautiful as they are functional.
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="section-title">Technical & Creative Skills</h2>
-        <div class="skills-wrapper">
-            <div class="skill-pill">Adobe Photoshop</div>
-            <div class="skill-pill">UI/UX Design</div>
-            <div class="skill-pill">Graphic Design</div>
-            <div class="skill-pill">Canva</div>
-            
-            <div class="skill-pill">Python</div>
-            <div class="skill-pill">C Programming</div>
-            <div class="skill-pill">NumPy</div>
-            <div class="skill-pill">Pandas</div>
-            <div class="skill-pill">Matplotlib</div>
-            <div class="skill-pill">Data Analysis</div>
-            <div class="skill-pill">System Security</div>
+    <div class="container reveal">
+        <h2 class="section-title">Arsenal</h2>
+        <div style="text-align: center;">
+            <span class="skill-tag">Adobe Photoshop</span>
+            <span class="skill-tag">UI/UX Design</span>
+            <span class="skill-tag">Graphic Design</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Data Analytics</span>
+            <span class="skill-tag">Pandas & NumPy</span>
+            <span class="skill-tag">Matplotlib</span>
+            <span class="skill-tag">System Security</span>
+            <span class="skill-tag">Leadership</span>
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="section-title">Professional Experience</h2>
-        <div class="experience-grid">
-            
-            <div class="glass-card">
+    <div class="container reveal">
+        <h2 class="section-title">Experience</h2>
+        <div class="grid">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">Aug 2025 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">Graphic Designer</h3>
-                <p style="color: var(--gold);">Technologia Hackathon</p>
-                <p style="font-size: 0.85rem; color: #888;">Designing branding assets and UI elements for the event.</p>
+                <h3>Technologia Hackathon</h3>
+                <p><strong>Graphic Designer</strong><br>Crafting the visual identity and branding assets for a major tech event.</p>
             </div>
-
-            <div class="glass-card">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">Aug 2025 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">Graphic Designer</h3>
-                <p style="color: var(--gold);">Design Society UEMK</p>
-                <p style="font-size: 0.85rem; color: #888;">Creating visual content and social media creatives.</p>
+                <h3>Design Society UEMK</h3>
+                <p><strong>Graphic Designer</strong><br>Leading creative initiatives and social media aesthetics.</p>
             </div>
-
-            <div class="glass-card">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">Aug 2025 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">CG Supervisor</h3>
-                <p style="color: var(--gold);">Smart Makers Festival</p>
-                <p style="font-size: 0.85rem; color: #888;">Supervising computer graphics and visual consistency.</p>
+                <h3>Smart Makers Festival</h3>
+                <p><strong>CG Supervisor</strong><br>Overseeing computer graphics quality and visual consistency.</p>
             </div>
-
-            <div class="glass-card">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">Oct 2024 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">Graphic Designer</h3>
-                <p style="color: var(--gold);">Robo Mellontikos UEMK</p>
+                <h3>Robo Mellontikos</h3>
+                <p><strong>Graphic Designer</strong><br>Designing futuristic assets for the robotics club.</p>
             </div>
-
-            <div class="glass-card">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">Aug 2024 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">Operations Team</h3>
-                <p style="color: var(--gold);">UEM GAMERZ GUILD</p>
+                <h3>UEM Gamerz Guild</h3>
+                <p><strong>Operations Team</strong><br>Managing events for the gaming community.</p>
             </div>
-
-             <div class="glass-card">
+            <div class="glass-card tilt-card">
                 <span class="role-badge">2025 - Present</span>
-                <h3 style="margin: 10px 0; color: #fff;">Anchor & Volunteer</h3>
-                <p style="color: var(--gold);">Ecstasia & Ureckon</p>
-                <p style="font-size: 0.85rem; color: #888;">Hosting cultural events and managing logistics.</p>
+                <h3>Ecstasia & Ureckon</h3>
+                <p><strong>Anchor & Volunteer</strong><br>Hosting cultural fests and managing ground logistics.</p>
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="section-title">Education & Achievements</h2>
+    <div class="container reveal">
+        <h2 class="section-title">Distinctions</h2>
         
-        <div class="award-box">
-            <i class="fas fa-medal" style="font-size: 3rem; color: var(--gold); margin-bottom: 15px;"></i>
-            <h3 style="color: #fff; margin: 0;">Vice Chancellor's Award</h3>
-            <p style="color: var(--gold-light); font-weight: bold; margin-top: 5px;">Sep 2025</p>
-            <p style="color: #ccc; font-size: 0.9rem; max-width: 600px; margin: 15px auto;">
-                Awarded for overall performance—balancing academics, co-curriculars, and campus contributions at IEM Newtown.
-            </p>
+        <div class="award-banner tilt-card">
+            <i class="fas fa-trophy"></i>
+            <h3 style="font-size: 2.5rem; color: var(--gold); margin: 0;">Vice Chancellor's Award</h3>
+            <p style="text-transform: uppercase; letter-spacing: 2px; color: #fff;">Sep 2025 • Overall Performance</p>
+            <p style="margin-top: 20px; max-width: 600px;">Awarded for excellence in balancing high academic standards with significant co-curricular contributions at IEM Newtown.</p>
         </div>
 
-        <div class="experience-grid">
-            <div class="glass-card">
-                <i class="fas fa-graduation-cap" style="color: var(--gold); font-size: 1.5rem; margin-bottom: 10px;"></i>
-                <h3 style="margin: 5px 0; color: #fff;">B.Tech CSE</h3>
-                <p style="color: #aaa;">Institute of Engineering & Management</p>
-                <p style="font-size: 0.8rem; color: #666;">2024 - 2028 | Kolkata</p>
+        <div class="grid">
+            <div class="glass-card tilt-card">
+                <i class="fas fa-graduation-cap" style="color: var(--gold); font-size: 2rem;"></i>
+                <h3>B.Tech CSE</h3>
+                <p>Institute of Engineering & Management<br>2024 - 2028</p>
             </div>
-
-            <div class="glass-card">
-                <i class="fas fa-certificate" style="color: var(--gold); font-size: 1.5rem; margin-bottom: 10px;"></i>
-                <h3 style="margin: 5px 0; color: #fff;">System Security</h3>
-                <p style="color: #aaa;">University of Colorado</p>
-                <p style="font-size: 0.8rem; color: #666;">Nov 2025</p>
+            <div class="glass-card tilt-card">
+                <i class="fas fa-certificate" style="color: var(--gold); font-size: 2rem;"></i>
+                <h3>System Security</h3>
+                <p>University of Colorado<br>Nov 2025</p>
             </div>
-
-            <div class="glass-card">
-                <i class="fas fa-shield-alt" style="color: var(--gold); font-size: 1.5rem; margin-bottom: 10px;"></i>
-                <h3 style="margin: 5px 0; color: #fff;">Cyber Security</h3>
-                <p style="color: #aaa;">University of London</p>
-                <p style="font-size: 0.8rem; color: #666;">Oct 2025</p>
+            <div class="glass-card tilt-card">
+                <i class="fas fa-shield-alt" style="color: var(--gold); font-size: 2rem;"></i>
+                <h3>Cyber Security</h3>
+                <p>University of London<br>Oct 2025</p>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="social-icons">
-            <a href="https://linkedin.com/in/anweeksha"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:anweeksha06@gmail.com"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/anweeksha"><i class="fab fa-github"></i></a>
+        <div class="socials">
+            <a href="https://linkedin.com/in/YOUR_LINKEDIN" class="hover-target"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:YOUR_EMAIL" class="hover-target"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/anweeksha" class="hover-target"><i class="fab fa-github"></i></a>
         </div>
-        <p style="margin-top: 30px; font-size: 0.8rem;">© 2025 Anweeksha Saha. Designed with Style.</p>
+        <p>© 2025 Anweeksha Saha. Built with Precision.</p>
     </footer>
+
+    <script>
+        // 1. TYPING EFFECT
+        const text = ["Graphics Lead", "UI/UX Designer", "CS Student", "Tech Enthusiast"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === text.length) count = 0;
+            currentText = text[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById('typewriter').textContent = letter;
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Pause at end of word
+            } else {
+                setTimeout(type, 100); // Typing speed
+            }
+        }());
+
+        // 2. SCROLL REVEAL ANIMATION
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 150;
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // 3. CUSTOM CURSOR
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Small delay for the outline (smoothness)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Expand cursor on hover
+        const hoverTargets = document.querySelectorAll('.hover-target, .glass-card, .skill-tag');
+        hoverTargets.forEach(link => {
+            link.addEventListener('mouseover', () => {
+                cursorOutline.classList.add('expanded');
+            });
+            link.addEventListener('mouseleave', () => {
+                cursorOutline.classList.remove('expanded');
+            });
+        });
+
+        // 4. 3D TILT EFFECT FOR CARDS
+        const cards = document.querySelectorAll('.tilt-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = ((y - centerY) / centerY) * -10; // Max rotation deg
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale(1)`;
+            });
+        });
+    </script>
 
 </body>
 </html>
