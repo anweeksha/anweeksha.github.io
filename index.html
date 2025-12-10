@@ -3,211 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anweeksha | Visuals</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <title>Anweeksha Saha | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
-        /* --- RESET & BASICS --- */
+        /* --- LUXE DARK MODE STYLES --- */
         body {
             margin: 0;
             padding: 0;
-            background-color: #0a0a0a; /* Deep Black Background */
-            color: #ffffff;
+            background-color: #050505;
+            color: #e0e0e0;
             font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
         }
 
-        /* --- GRADIENT TEXT ANIMATION --- */
-        .gradient-text {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        /* Gold Gradient Text */
+        .gold-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: shine 6s linear infinite;
             background-size: 200%;
-            animation: shine 5s linear infinite;
         }
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        /* --- HEADER SECTION --- */
+        /* --- HEADER --- */
         header {
-            height: 90vh; /* Takes up most of the screen */
+            min-height: 90vh; /* Full screen impact */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #222 0%, #0a0a0a 70%);
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+            padding: 20px;
+        }
+
+        /* --- BIG PROFILE PICTURE --- */
+        .profile-pic {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%; /* Circle shape */
+            border: 4px solid #b38728; /* Gold border */
+            box-shadow: 0 0 40px rgba(191, 149, 63, 0.5); /* Gold Glow */
+            margin-bottom: 40px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 5rem;
+            font-size: 4.5rem;
             margin: 0;
-            letter-spacing: -2px;
+            letter-spacing: -1px;
         }
 
         p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #888;
-            margin-top: 10px;
+            margin-top: 15px;
+            max-width: 600px;
+            line-height: 1.6;
         }
 
-        /* --- THE GALLERY (YOUR WORK) --- */
+        /* --- SECTIONS --- */
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: auto;
-            padding: 50px 20px;
+            padding: 80px 20px;
         }
 
         h2.section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid #333;
-            display: inline-block;
-            padding-bottom: 10px;
+            margin-bottom: 60px;
+            color: #fff;
             position: relative;
-            left: 50%;
-            transform: translateX(-50%);
+        }
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #b38728;
+            margin: 20px auto 0;
         }
 
-        .gallery {
+        /* --- CARDS (Glassmorphism) --- */
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
-        /* --- GLASS CARDS --- */
-        .card {
-            background: rgba(255, 255, 255, 0.05); /* See-through glass */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            position: relative;
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-10px); /* Moves up when hovered */
-            box-shadow: 0 20px 40px rgba(191, 149, 63, 0.2); /* Gold glow */
+        .glass-card:hover {
+            transform: translateY(-5px);
             border-color: #bf953f;
+            box-shadow: 0 10px 30px rgba(191, 149, 63, 0.15);
         }
 
-        .card img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .card:hover img {
-            opacity: 1;
-        }
-
-        .card-info {
-            padding: 20px;
-        }
-
-        .card-info h3 {
-            margin: 0;
+        .glass-card h3 {
+            margin-top: 0;
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: #eee;
+            color: #fcf6ba;
         }
 
-        .card-info p {
+        .glass-card p {
             color: #aaa;
-            font-size: 0.9rem;
-            margin-top: 5px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .role-badge {
+            display: inline-block;
+            background: rgba(191, 149, 63, 0.2);
+            color: #bf953f;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        /* --- AWARDS SECTION --- */
+        .award-box {
+            border: 2px solid #b38728;
+            background: rgba(179, 135, 40, 0.05);
+            text-align: center;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
         }
 
         /* --- FOOTER --- */
         footer {
+            background: #000;
             text-align: center;
-            padding: 50px;
-            background: #050505;
-            color: #555;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 0.9rem;
         }
-
-        a.social-link {
-            color: #bf953f;
-            text-decoration: none;
-            font-size: 1.2rem;
-            margin: 0 10px;
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 15px;
             transition: color 0.3s;
         }
-        
-        a.social-link:hover {
-            color: white;
-        }
+        .social-icons a:hover { color: #bf953f; }
 
-        /* Mobile Adjustments */
+        /* Mobile Fix */
         @media (max-width: 768px) {
             h1 { font-size: 3rem; }
-            .card img { height: 250px; }
+            .profile-pic { width: 160px; height: 160px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 class="gradient-text">ANWEEKSHA</h1>
-        <p class="subtitle">Graphics Lead & Visual Artist</p>
+        <img src="profile.jpg" onerror="this.src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'" alt="Anweeksha Saha" class="profile-pic">
+
+        <h1 class="gold-text">ANWEEKSHA SAHA</h1>
+        <p class="subtitle">Computer Science & Technology Student <br> Graphic Designer | UI/UX | AI Enthusiast</p>
+        <p style="color: #666; font-size: 0.9rem; letter-spacing: 2px; margin-top: 10px;">📍 HOWRAH, WEST BENGAL</p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Selected Works</h2>
+        <h2 class="section-title">About Me</h2>
+        <div class="glass-card" style="text-align: center; max-width: 800px; margin: auto;">
+            <p>
+                I am a 2nd-year B.Tech student at <strong>Institute of Engineering & Management (IEM), Kolkata</strong>, combining technical logic with creative design. 
+                <br><br>
+                Skilled in <strong>Adobe Photoshop, Python, and Data Analysis</strong>, I bridge the gap between complex code and beautiful visuals. 
+                Whether organizing hackathons or designing brand identities, I aim to create innovative solutions in AI and Full-Stack Development.
+            </p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="grid">
+            <div class="glass-card">
+                <span class="role-badge">Aug 2025 - Present</span>
+                <h3>Technologia Hackathon</h3>
+                <p>Graphic Designer</p>
+                <p style="font-size: 0.8rem; color: #888;">Creating visual assets for the event.</p>
+            </div>
+
+            <div class="glass-card">
+                <span class="role-badge">Aug 2025 - Present</span>
+                <h3>Design Society UEMK</h3>
+                <p>Graphic Designer</p>
+                <p style="font-size: 0.8rem; color: #888;">Leading design initiatives for the society.</p>
+            </div>
+
+            <div class="glass-card">
+                <span class="role-badge">Aug 2025 - Present</span>
+                <h3>Smart Makers Festival</h3>
+                <p>Computer Graphics Supervisor</p>
+            </div>
+
+            <div class="glass-card">
+                <span class="role-badge">Mar 2025 - Present</span>
+                <h3>Ecstasia & Ureckon</h3>
+                <p>Anchor & Volunteer</p>
+                <p style="font-size: 0.8rem; color: #888;">Hosting cultural events and managing operations.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title">Honors & Certifications</h2>
         
-        <div class="gallery">
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1000&auto=format&fit=crop" alt="Design Carnival">
-                <div class="card-info">
-                    <h3>Design Carnival</h3>
-                    <p>Event Poster • 2025</p>
-                </div>
-            </div>
+        <div class="award-box">
+            <i class="fas fa-trophy" style="font-size: 3rem; color: #bf953f; margin-bottom: 20px;"></i>
+            <h3>Vice Chancellor's Award</h3>
+            <p style="color: #fcf6ba; font-weight: bold;">For Overall Performance • Sep 2025</p>
+            <p>Awarded for excellence in balancing academics, co-curriculars, and campus contributions at IEM Newtown.</p>
+        </div>
 
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop" alt="Microsoft Logo">
-                <div class="card-info">
-                    <h3>Microsoft Dev Club</h3>
-                    <p>Logo Identity • Monogram</p>
-                </div>
+        <div class="grid" style="margin-top: 40px;">
+            <div class="glass-card">
+                <h3>Advanced System Security</h3>
+                <p>University of Colorado System • Nov 2025</p>
             </div>
-
-            <div class="card">
-                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1000&auto=format&fit=crop" alt="Durga Art">
-                <div class="card-info">
-                    <h3>Durga & AI</h3>
-                    <p>Digital Art • Competition Entry</p>
-                </div>
-            </div>
-            
-             <div class="card">
-                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop" alt="Dress Up App">
-                <div class="card-info">
-                    <h3>Interactive Web</h3>
-                    <p>Dress-Up App • HTML/CSS</p>
-                </div>
+            <div class="glass-card">
+                <h3>Cyber Security Fundamentals</h3>
+                <p>University of London • Oct 2025</p>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>CONNECT WITH ME</p>
-        <br>
-        <a href="https://linkedin.com/in/YOUR_USERNAME" class="social-link">LinkedIn</a>
-        <a href="mailto:YOUR_EMAIL" class="social-link">Email</a>
-        <a href="https://github.com/anweeksha" class="social-link">GitHub</a>
-        <br><br><br>
-        <p>© 2025 Anweeksha. All Rights Reserved.</p>
+        <div class="social-icons">
+            <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:YOUR_EMAIL"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/anweeksha"><i class="fab fa-github"></i></a>
+        </div>
+        <p style="margin-top: 30px;">© 2025 Anweeksha Saha. All Rights Reserved.</p>
     </footer>
 
 </body>
